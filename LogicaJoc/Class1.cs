@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace LogicaJoc
-{    
-    //probancdo sincrocnizacion
+{       
     public class Logica
     {
         static string psecreta;
