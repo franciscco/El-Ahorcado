@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace LogicaJoc
 {
+    //fg
     public class Logica
     {
         static string psecreta;
