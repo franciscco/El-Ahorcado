@@ -8,18 +8,17 @@ namespace LogicaJoc
 {       
     public class Logica
     {
-        static string psecreta;
-        static string pmostrada;
+        static string psecreta;        
         static int intentos = 8;
 
         public static void paraulaSecreta()
         {            
             Console.WriteLine("Introduce la palabra secreta:");
             psecreta = Console.ReadLine();
-            
+            string pmostrada = "";
             for (int i = 0; i < psecreta.Length; i++)
             {
-                pmostrada[i] = "*";
+                pmostrada[i] = '*';
             }
         }
 
