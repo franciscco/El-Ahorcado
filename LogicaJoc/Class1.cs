@@ -29,7 +29,7 @@ namespace LogicaJoc
             {
                 Console.WriteLine(pmostrada);
                 Console.WriteLine("Introduce una letra:");
-                letra=Console.ReadLine();
+                letra = Console.ReadLine();
                 if (psecreta.IndexOf(letra) == -1)
                 {
                     intentos--;
@@ -38,7 +38,7 @@ namespace LogicaJoc
                     {
                         Console.WriteLine("Has perdido");
                         break;
-                    }                   
+                    }
                 }
                 else
                 {
@@ -47,10 +47,14 @@ namespace LogicaJoc
                     pmostrada = pmostrada.Insert(i, letra);
                     Console.WriteLine(pmostrada);
                     if (psecreta.CompareTo(pmostrada) == 0)
+                    {
                         Console.WriteLine("Has ganado");
+                        break;
+                    }
                 }
             }
-            while (intentos != 0 || psecreta.CompareTo(pmostrada) == 0);
+            while (intentos != 0 || pmostrada.IndexOf('*') != -1
+                );
         }
         public static void pintarPenjat()
         {
