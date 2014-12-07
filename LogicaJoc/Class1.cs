@@ -8,53 +8,69 @@ namespace LogicaJoc
 {
     public class Logica
     {
-        static string psecreta;
-        static string pmostrada;
+        static string palsecreta;
+        static string palmostrada;
         static int intentos = 8;
 
         public static void paraulaSecreta()
         {
             Console.WriteLine("Introduce la palabra secreta:");
-            psecreta = Console.ReadLine();
-            for (int i = 0; i < psecreta.Length; i++)
+            palsecreta = Console.ReadLine();
+            for (int i = 0; i < palsecreta.Length; i++)
             {
-                pmostrada = pmostrada + '*';
+                palmostrada += '*';
             }
         }
 
         public static void jugar()
         {
             string letra;
+            string caracter;
+            bool acierto=false;
             do
             {
-                Console.WriteLine(pmostrada);
+                Console.WriteLine(palmostrada);
                 Console.WriteLine("Introduce una letra:");
                 letra = Console.ReadLine();
-                if (psecreta.IndexOf(letra) == -1)
+
+                for (int i = 0; i < palsecreta.Length; i++)
                 {
-                    intentos--;
-                    pintarPenjat();
-                    if (intentos == 0)
+                    caracter = palsecreta.Substring(i, 1);
+                    if (caracter.Equals(letra))
                     {
-                        Console.WriteLine("Has perdido");
-                        break;
+                        palmostrada = palmostrada.Remove(i, 1);
+                        palmostrada = palmostrada.Insert(i, letra);
+                        acierto = true;
                     }
+                }
+                if (acierto)
+                {
+                    Console.WriteLine(palmostrada);
                 }
                 else
                 {
-                    int i = psecreta.IndexOf(letra);
-                    pmostrada = pmostrada.Remove(i, 1);
-                    pmostrada = pmostrada.Insert(i, letra);
-                    Console.WriteLine(pmostrada);
-                    if (psecreta.CompareTo(pmostrada) == 0)
-                    {
-                        Console.WriteLine("Has ganado");
-                        break;
-                    }
+                    intentos--;
+                    pintarPenjat();
                 }
+                comprobarFinal();
             }
-            while (intentos != 0 || pmostrada.IndexOf('*') != -1
-                );
+
+            while (!comprobarFinal());                
+            }
+        static bool comprobarFinal()
+        {
+            bool final = false;
+            if (palmostrada==palsecreta)
+            {
+                Console.WriteLine("Has ganado");
+                final=true;
+            }
+            if (intentos==0)
+            {
+                Console.WriteLine("Has perdido");
+                final=true;
+            }
+            return final;
         }
         public static void pintarPenjat()
         {
