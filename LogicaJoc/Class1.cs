@@ -18,7 +18,7 @@ namespace LogicaJoc
             psecreta = Console.ReadLine();
             for (int i = 0; i < psecreta.Length; i++)
             {
-                pmostrada[i] = '*';
+                pmostrada = pmostrada + '*';
             }
         }
 
