@@ -10,9 +10,10 @@ namespace ElPenjat
     class Program
     {
         static void Main(string[] args)
-        {           
+        {      
             Logica.paraulaSecreta();
             Logica.jugar();
+            Console.ReadKey();
         }      
     }
 }

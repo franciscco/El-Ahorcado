@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace LogicaJoc
-{       
+{
     public class Logica
     {
         static string psecreta;
@@ -13,7 +13,7 @@ namespace LogicaJoc
         static int intentos = 8;
 
         public static void paraulaSecreta()
-        {            
+        {
             Console.WriteLine("Introduce la palabra secreta:");
             psecreta = Console.ReadLine();
             for (int i = 0; i < psecreta.Length; i++)
@@ -24,22 +24,33 @@ namespace LogicaJoc
 
         public static void jugar()
         {
-            Console.WriteLine("Introduce una letra:");
-            string letra = Console.ReadLine();
-            if (psecreta.IndexOf(letra) == -1)
+            string letra;
+            do
             {
-                intentos--;
-                pintarPenjat();
-                if (intentos == 0)
-                    Console.WriteLine("Has perdido");
-            }
-            else
-            {
-                pmostrada[psecreta.IndexOf(letra)] = letra;
                 Console.WriteLine(pmostrada);
-                if (psecreta.CompareTo(pmostrada) == 0)
-                    Console.WriteLine("Has ganado");
+                Console.WriteLine("Introduce una letra:");
+                letra=Console.ReadLine();
+                if (psecreta.IndexOf(letra) == -1)
+                {
+                    intentos--;
+                    pintarPenjat();
+                    if (intentos == 0)
+                    {
+                        Console.WriteLine("Has perdido");
+                        break;
+                    }                   
+                }
+                else
+                {
+                    int i = psecreta.IndexOf(letra);
+                    pmostrada = pmostrada.Remove(i, 1);
+                    pmostrada = pmostrada.Insert(i, letra);
+                    Console.WriteLine(pmostrada);
+                    if (psecreta.CompareTo(pmostrada) == 0)
+                        Console.WriteLine("Has ganado");
+                }
             }
+            while (intentos != 0 || psecreta.CompareTo(pmostrada) == 0);
         }
         public static void pintarPenjat()
         {
@@ -76,5 +87,5 @@ namespace LogicaJoc
                     break;
             }
         }
-    }        
+    }
 }
