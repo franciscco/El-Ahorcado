@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LogicaJoc;
+using ElPenjat;
 
 namespace ElPenjat
 {
@@ -11,9 +11,10 @@ namespace ElPenjat
     {
         static void Main(string[] args)
         {      
-            Logica.paraulaSecreta();
-            Logica.jugar();
-            Console.ReadKey();
+            Penjat.paraulaSecreta();
+            Console.Clear();
+            Penjat.jugar();
+            Console.ReadKey();            
         }      
     }
 }
