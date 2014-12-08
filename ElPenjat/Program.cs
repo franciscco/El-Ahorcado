@@ -14,7 +14,7 @@ namespace ElPenjat
             Penjat.paraulaSecreta();
             Console.Clear();
             Penjat.jugar();
-            Console.ReadKey();            
+            Console.ReadKey();       
         }      
     }
 }

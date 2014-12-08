@@ -13,7 +13,7 @@ namespace ElPenjat
         static int intentos = 8;
         public static void paraulaSecreta()
         {
-            Console.WriteLine("Introduce la palabra secreta:");
+            Console.Write("\n Introduce la palabra secreta: ");
             palsecreta = Console.ReadLine();
             for (int i = 0; i < palsecreta.Length; i++)
             {
@@ -24,12 +24,16 @@ namespace ElPenjat
         {
             string letra;
             string caracter;
-            
             do
             {
                 bool acierto = false;
+                Console.Clear();
+                Console.WriteLine();
                 Console.WriteLine(palmostrada);
-                Console.WriteLine("\n Introduce una letra:");
+                Console.WriteLine();
+                pintarPenjat();
+                Console.WriteLine();
+                Console.Write("\n Introduce una letra: ");
                 letra = Console.ReadLine();
 
                 for (int i = 0; i < palsecreta.Length; i++)
@@ -39,7 +43,7 @@ namespace ElPenjat
                     {
                         palmostrada = palmostrada.Remove(i, 1);
                         palmostrada = palmostrada.Insert(i, letra);
-                        acierto = true;
+                        acierto = true;                        
                     }
                 }
 
@@ -50,9 +54,8 @@ namespace ElPenjat
                 else
                 {
                     intentos--;
-                    pintarPenjat();
                 }
-                Console.Clear();
+                
                 comprobarFinal();
             }
             while (comprobarFinal() != true);
