@@ -28,7 +28,7 @@ namespace ElPenjat
             do
             {
                 Console.WriteLine(palmostrada);
-                Console.WriteLine("Introduce una letra:");
+                Console.WriteLine("\n Introduce una letra:");
                 letra = Console.ReadLine();
 
                 for (int i = 0; i < palsecreta.Length; i++)
@@ -61,12 +61,12 @@ namespace ElPenjat
             bool final = false;
             if (palmostrada == palsecreta)
             {
-                Console.WriteLine("Has ganado");
+                Console.WriteLine("\n Has ganado");
                 final = true;
             }
             if (intentos == 0)
             {
-                Console.WriteLine("Has perdido");
+                Console.WriteLine("\n Has perdido");
                 final = true;
             }
             return final;
@@ -76,15 +76,15 @@ namespace ElPenjat
             string penjat = "";
             switch (intentos)
             {
-                case '0':
+                case 0:
                     penjat = "___________\r\n" +
                            "|       |  \r\n" +
                            "|       o  \r\n" +
                            "|      /|\\\r\n" +
                            "|      / \\\r\n" +
-                           "|          \r\n";       
+                           "|          \r\n";
                     break;
-                case '1':
+                case 1:
                     penjat = "___________\r\n" +
                             "|       |  \r\n" +
                             "|       o  \r\n" +
@@ -92,7 +92,7 @@ namespace ElPenjat
                             "|      /  \r\n" +
                             "|          \r\n";
                     break;
-                case '2':
+                case 2:
                     penjat = "___________\r\n" +
                             "|       |  \r\n" +
                             "|       o  \r\n" +
@@ -100,7 +100,7 @@ namespace ElPenjat
                             "|          \r\n" +
                             "|          \r\n";
                     break;
-                case '3':
+                case 3:
                     penjat = "___________\r\n" +
                             "|       |  \r\n" +
                             "|       o  \r\n" +
@@ -108,7 +108,7 @@ namespace ElPenjat
                             "|          \r\n" +
                             "|          \r\n";
                     break;
-                case '4':
+                case 4:
                     penjat = "___________\r\n" +
                             "|       |  \r\n" +
                             "|       o  \r\n" +
@@ -116,14 +116,15 @@ namespace ElPenjat
                             "|          \r\n" +
                             "|          \r\n";
                     break;
-                case '5': penjat = "___________\r\n" +
+                case 5:
+                    penjat = "___________\r\n" +
                             "|       |  \r\n" +
                             "|       o  \r\n" +
                             "|          \r\n" +
                             "|          \r\n" +
                             "|          \r\n";
                     break;
-                case '6':
+                case 6:
                     penjat = "___________\r\n" +
                             "|       |  \r\n" +
                             "|          \r\n" +
@@ -131,7 +132,7 @@ namespace ElPenjat
                             "|          \r\n" +
                             "|          \r\n";
                     break;
-                case '7':
+                case 7:
                     penjat = "___________\r\n" +
                            "|          \r\n" +
                            "|          \r\n" +
