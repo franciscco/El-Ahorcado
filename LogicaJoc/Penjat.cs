@@ -24,9 +24,10 @@ namespace ElPenjat
         {
             string letra;
             string caracter;
-            bool acierto = false;
+            
             do
             {
+                bool acierto = false;
                 Console.WriteLine(palmostrada);
                 Console.WriteLine("\n Introduce una letra:");
                 letra = Console.ReadLine();
