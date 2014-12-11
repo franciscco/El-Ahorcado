@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ElPenjat
 {
+    //RAFAPUIG: Replanteate el diseño porque no se pueden hacer Console.WriteLine o Console.ReadLine en el modelo
     public class Penjat
     {
         static string palsecreta;
