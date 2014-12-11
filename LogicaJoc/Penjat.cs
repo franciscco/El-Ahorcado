@@ -27,11 +27,14 @@ namespace ElPenjat
             do
             {
                 bool acierto = false;
+                
+               
                 Console.Clear();
                 Console.WriteLine();
                 Console.WriteLine(palmostrada);
                 Console.WriteLine();
-                pintarPenjat();
+                comprobarFinal();
+                pintarPenjat(); 
                 Console.WriteLine();
                 Console.Write("\n Introduce una letra: ");
                 letra = Console.ReadLine();
@@ -54,9 +57,12 @@ namespace ElPenjat
                 else
                 {
                     intentos--;
+                    if (intentos==0)
+                    {
+                        Console.Clear();
+                        pintarPenjat();
+                    }
                 }
-                
-                comprobarFinal();
             }
             while (comprobarFinal() != true);
         }
@@ -65,12 +71,17 @@ namespace ElPenjat
             bool final = false;
             if (palmostrada == palsecreta)
             {
-                Console.WriteLine("\n Has ganado");
+                Console.Clear();
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine("\n ¡¡¡ H A S  G A N A D O !!!");
                 final = true;
             }
             if (intentos == 0)
             {
-                Console.WriteLine("\n Has perdido");
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine("\n ¡Lo siento, has perdido!");
                 final = true;
             }
             return final;
@@ -146,7 +157,6 @@ namespace ElPenjat
                     break;
             }
             Console.WriteLine(penjat);
-            Console.ReadKey();
         }
     }
 }
