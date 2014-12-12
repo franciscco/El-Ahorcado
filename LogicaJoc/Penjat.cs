@@ -9,95 +9,61 @@ namespace ElPenjat
     //RAFAPUIG: Replanteate el diseño porque no se pueden hacer Console.WriteLine o Console.ReadLine en el modelo
     public class Penjat
     {
-        static string palsecreta;
-        static string palmostrada;
-        static int intentos = 8;
+        static string word;
+        public static string hideword;
+        public static string caracter = "";
+        public static int lifes = 8;
+        
 
         //Método que pide una palabra secreta para desarrollar el juego
-        public static void paraulaSecreta()
-        {
-            Console.Write("\n Introduce la palabra secreta: ");
-            palsecreta = Console.ReadLine();
-            for (int i = 0; i < palsecreta.Length; i++) //Bucle para rellenar con asteriscos la palabra mostrada
+        public static string secretWord()
+        {            
+            word = Console.ReadLine();
+            word = word.ToUpper();          //La pasamos a mayúsculas para que siempre reconozca la letra
+            for (int i = 0; i < word.Length; i++) //Bucle para rellenar con asteriscos la palabra mostrada
             {
-                palmostrada += '*';
+                hideword += '*';
             }
-        }
-
-        //Método que ejecuta la dinámica del juego y llama a otros métodos
-        public static void jugar()
+            return hideword;
+        }        
+     
+        //Método que comprueba si la letra introducida por el jugador es correcta
+        public static string checkLetter(string letter, ref bool acierto)
         {
-            string letra;
-            string caracter;
-            do
+            for (int i = 0; i < word.Length; i++)     
             {
-                bool acierto = false;
-                Console.Clear();
-                Console.WriteLine();
-                Console.WriteLine(palmostrada);
-                Console.WriteLine();
-                comprobarFinal();                   //Ejecuta el método comprobar si el juego ha finalizado
-                pintarPenjat();                     //Ejecuta el método que dibuja la figura del ahorcado
-                Console.WriteLine();
-                Console.Write("\n Introduce una letra: ");
-                letra = Console.ReadLine();
-
-                for (int i = 0; i < palsecreta.Length; i++)     //Bucle que comprueba la letra y la sustituye si se acierta
+                caracter = word.Substring(i, 1);
+                if (caracter.Equals(letter))
                 {
-                    caracter = palsecreta.Substring(i, 1);
-                    if (caracter.Equals(letra))
-                    {
-                        palmostrada = palmostrada.Remove(i, 1);
-                        palmostrada = palmostrada.Insert(i, letra);
-                        acierto = true;                        
-                    }
-                }
-
-                if (acierto)
-                {
-                    Console.WriteLine(palmostrada);
-                }
-                else
-                {
-                    intentos--;
-                    if (intentos==0)
-                    {
-                        Console.Clear();
-                        pintarPenjat();
-                    }
+                    hideword = hideword.Remove(i, 1);
+                    hideword = hideword.Insert(i, letter);
+                    acierto = true;
                 }
             }
-            while (comprobarFinal() != true);
+            return caracter;
         }
 
         //Método que comprueba si el juego ha acabado, bien porque se ha adivinado la palabra secreta,
         //o bien, porque se han agotado las vidas
-        static bool comprobarFinal()
+        public static bool checkFinal()
         {
             bool final = false;
-            if (palmostrada == palsecreta)
-            {
-                Console.Clear();
-                Console.WriteLine();
-                Console.WriteLine();
-                Console.WriteLine("\n ¡¡¡ H A S  G A N A D O !!!");
+            if (hideword == word)
+            {               
                 final = true;
             }
-            if (intentos == 0)
-            {
-                Console.WriteLine();
-                Console.WriteLine();
-                Console.WriteLine("\n ¡Lo siento, has perdido!");
+            if (lifes == 0)
+            {                
                 final = true;
             }
             return final;
         }
         
         //Método que dibuja el gráfico del ahorcado en función del número de errores cometidos
-        public static void pintarPenjat()
+        public static string showPenjat()
         {
             string penjat = "";
-            switch (intentos)
+            switch (lifes)
             {
                 case 0:
                     penjat = "___________\r\n" +
@@ -164,7 +130,7 @@ namespace ElPenjat
                            "|          \r\n";
                     break;
             }
-            Console.WriteLine(penjat);
+            return penjat;
         }
     }
 }
