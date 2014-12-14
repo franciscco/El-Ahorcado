@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 namespace ElPenjat
 {
     //RAFAPUIG: Replanteate el diseño porque no se pueden hacer Console.WriteLine o Console.ReadLine en el modelo
+
+    //FRANCISCO ESPASA: Hola Rafa, he modificado el diseño y ahora es el main quien ejecuta el bucle do-while.
+    // Lo veo mucho mejor ahora, gracias por la indicación.
+
+
     public class Penjat
     {
         static string word;
@@ -28,7 +33,7 @@ namespace ElPenjat
         }        
      
         //Método que comprueba si la letra introducida por el jugador es correcta
-        public static string checkLetter(string letter, ref bool acierto)
+        public static string checkLetter(string letter, ref bool succes)
         {
             for (int i = 0; i < word.Length; i++)     
             {
@@ -37,7 +42,7 @@ namespace ElPenjat
                 {
                     hideword = hideword.Remove(i, 1);
                     hideword = hideword.Insert(i, letter);
-                    acierto = true;
+                    succes = true;
                 }
             }
             return caracter;
